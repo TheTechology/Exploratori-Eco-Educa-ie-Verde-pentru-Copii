@@ -159,10 +159,12 @@
       align-items: center;
     }
     footer {
-      text-align: center;
-      padding: 2rem;
-      background: #caf0f8;
-    }
+  text-align: center;
+  padding: 2rem;
+  background: #caf0f8;
+  color: #13547a;
+  font-weight: 500;
+}
       @media (max-width: 600px) {
       .section {
         flex-direction: column;
@@ -185,12 +187,25 @@
         margin-top: 0.5rem;
       }
     }
-  </style>
+  @keyframes swing {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+</style>
 <style>
   body[data-theme='night'] {
-    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-    color: #e0f7fa;
-  }
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #e0f7fa;
+}
+body[data-theme='night'] footer {
+  background: #1e3c4a;
+  color: #e0f7fa;
+}
+body[data-theme='night'] .quiz, body[data-theme='night'] .calendar {
+  background: #1e3c4a;
+  color: #e0f7fa;
+}
   body[data-theme='night'] .card {
   background: rgba(255, 255, 255, 0.05);
   color: #e0f7fa;
@@ -268,15 +283,16 @@ body[data-theme='night'] .popup h3 {
   <section class="calendar"></section>
 
 <!-- 🏅 Secțiune generare diplomă -->
-  <section class="quiz">
-    <h3>🏅 Primește diploma ta digitală!</h3>
+  <section class="quiz" style="background:#ffffffdd; color:#235347;">
+    <h3 style="color:#13547a;">🏅 Primește diploma ta digitală!</h3>
     <p>Completează formularul și obține o diplomă personalizată 🧒🌿</p>
     <form onsubmit="event.preventDefault(); generateDiploma();">
       <input type="text" id="numeCopil" placeholder="Nume și Prenume" required style="padding:10px; border-radius:10px; border:1px solid #ccc; width:80%; margin-bottom:10px;"><br>
       <input type="number" id="varstaCopil" placeholder="Vârsta" required style="padding:10px; border-radius:10px; border:1px solid #ccc; width:80%; margin-bottom:10px;"><br>
       <button type="submit" class="btn">Generează Diploma</button>
     </form>
-    <div id="diploma" style="margin-top:2rem; display:none; background:white; border-radius:20px; padding:2rem; box-shadow:0 0 10px rgba(0,0,0,0.2);">
+    <div id="diploma" style="margin-top:2rem; display:none; background:white; border-radius:20px; padding:2rem; box-shadow:0 0 10px rgba(0,0,0,0.2); position:relative;">
+  <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Mascotă" style="position:absolute; top:-30px; right:-30px; width:80px; animation: swing 3s infinite;">
       <h2 style="color:#20858f;">🎓 DIPLOMĂ DE MERIT</h2>
       <p id="numeAfisat"></p>
       <p id="titluAfisat">Titlul: Explorator Eco al Tehnologiei</p>
