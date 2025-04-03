@@ -48,11 +48,12 @@
       font-size: 1.2rem;
     }
     .section {
-      padding: 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
     .card {
       background: #ffffffdd;
       border-radius: 15px;
@@ -108,6 +109,7 @@
   cursor: pointer;
   font-size: 1rem;
   transition: background 0.3s;
+  margin: 0.5rem;
 }
     .btn:hover {
   background: #00C2A8;
@@ -182,11 +184,13 @@
   <img src="https://raw.githubusercontent.com/TheTechology/masurarea-calitate-aer-adjud/main/LGV.png" alt="Grupul Verde" style="height: 80px;">
 </header>
 
-  <section class="hero">
-    <h2>Educație pentru Mediu și Tehnologie</h2>
-    <p>Învățăm, Protejăm, Inovăm – împreună, prin tehnologie!</p>
-    <div class="badge">🌟 Explorator Eco</div>
-  </section>
+  <section class="hero">$1
+  <div class="section">
+    <button class="btn" onclick="togglePopup('popup5')">Despre Asociație</button>
+    <button class="btn" onclick="togglePopup('popup6')">Despre Proiect</button>
+    <button class="btn" onclick="togglePopup('popup7')">Despre Formator</button>
+  </div>
+</section>
 
   <section class="section">
     <div class="card">
@@ -278,11 +282,7 @@
   </button>
 </section>
 
-<section class="section">
-  <button class="btn" onclick="togglePopup('popup5')">Despre Asociație</button>
-  <button class="btn" onclick="togglePopup('popup6')">Despre Proiect</button>
-  <button class="btn" onclick="togglePopup('popup7')">Despre Formator</button>
-</section>
+
 
 <footer>
   <p>&copy; 2025 Asociația Grupul Verde - Toate drepturile rezervate.</p>
