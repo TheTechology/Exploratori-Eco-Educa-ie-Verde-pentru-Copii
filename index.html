@@ -212,12 +212,10 @@
   </section>
 
   <section class="quiz">
-    <h3>🎮 Joc rapid: Ce știi despre natură și tehnologie?</h3>
-    <p>Care dintre următoarele NU este reciclabil?</p>
-    <button class="btn" onclick="alert('Bravo! Ai ales corect! ❌ Hârtia igienică nu se reciclează.')">Hârtie igienică</button>
-    <button class="btn" onclick="alert('Hmm... Greșit. Ambalajele metalice se reciclează!')">Doze de aluminiu</button>
-    <button class="btn" onclick="alert('Oops! Sticla se reciclează perfect!')">Sticlă</button>
-  </section>
+  <h3>🎮 Joc rapid: Ce știi despre natură și tehnologie?</h3>
+  <p id="quiz-question">Încărcare întrebare...</p>
+  <div id="quiz-buttons"></div>
+</section>
 
   <section class="calendar">$1</section>
 
@@ -280,11 +278,44 @@
   </button>
 </section>
 
+<section class="section">
+  <button class="btn" onclick="togglePopup('popup5')">Despre Asociație</button>
+  <button class="btn" onclick="togglePopup('popup6')">Despre Proiect</button>
+  <button class="btn" onclick="togglePopup('popup7')">Despre Formator</button>
+</section>
+
 <footer>
   <p>&copy; 2025 Asociația Grupul Verde - Toate drepturile rezervate.</p>
 </footer>
 
-  <div class="overlay" id="overlay" onclick="closePopups()"></div>
+  <div id="popup5" class="popup">
+  <h3>Despre Asociație</h3>
+  <p>🌿 Asociația Grupul Verde este o organizație non-profit din Adjud care promovează educația pentru mediu și tehnologie în rândul copiilor și tinerilor. Ne implicăm în activități practice, proiecte IT, plantări și inițiative verzi în comunitate.</p>
+  <div class="badge">🌍 ONG Local Activ</div>
+  <br>
+  <button class="btn" onclick="window.open('https://wa.me/40772246337?text=Salut!%20Vreau%20să%20aflu%20mai%20multe%20despre%20Asociația%20Grupul%20Verde!')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+  <button class="btn" onclick="window.location.href='mailto:office@grupulverde.ro?subject=Despre%20asociatie&body=Bună!%20Vreau%20să%20aflu%20mai%20multe%20despre%20Asociația%20Grupul%20Verde.'"><i class="fas fa-envelope"></i> Scrie-ne</button>
+</div>
+
+<div id="popup6" class="popup">
+  <h3>Despre Proiect</h3>
+  <p>📘 „Exploratori Eco” este un proiect educațional digital care combină activități de învățare, joacă și tehnologie. Copiii pot obține diplome, accesa jocuri, descoperi natura și deveni parte dintr-o comunitate prietenoasă.</p>
+  <div class="badge">🧩 Educație Verde & Digitală</div>
+  <br>
+  <button class="btn" onclick="window.open('https://wa.me/40772246337?text=Vreau%20detalii%20despre%20proiectul%20Exploratori%20Eco!')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+  <button class="btn" onclick="window.location.href='mailto:office@grupulverde.ro?subject=Detalii%20proiect&body=Bună!%20Aș%20vrea%20informații%20despre%20proiectul%20Exploratori%20Eco.'"><i class="fas fa-envelope"></i> Întreabă-ne</button>
+</div>
+
+<div id="popup7" class="popup">
+  <h3>Despre Formator</h3>
+  <p>👨‍🏫 Marian Dumitru, formator și designer digital, coordonează proiectul cu pasiune pentru tehnologie, educație și implicare comunitară. Cu experiență în UX/UI și voluntariat educațional, creează alături de copii lumi mai bune prin cod și empatie.</p>
+  <div class="badge">👨‍💻 Formator Prietenos</div>
+  <br>
+  <button class="btn" onclick="window.open('https://wa.me/40772246337?text=Salut%20Marian!%20Aș%20vrea%20să%20vorbim%20despre%20formare%20digitală%20sau%20colaborare!')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+  <button class="btn" onclick="window.location.href='mailto:office@grupulverde.ro?subject=Colaborare%20educațională&body=Salut%20Marian,%20mi-ar%20plăcea%20să%20discutăm%20despre%20proiecte%20educaționale%20digitale.'"><i class="fas fa-envelope"></i> Colaborare</button>
+</div>
+
+<div class="overlay" id="overlay" onclick="closePopups()"></div>
 
   
 
@@ -294,6 +325,81 @@
 
   
   <script>
+    const quizData = [
+      {
+        question: "Care dintre următoarele NU este reciclabil?",
+        answers: [
+          { text: "Hârtie igienică", correct: true },
+          { text: "Doze de aluminiu", correct: false },
+          { text: "Sticlă", correct: false }
+        ]
+      },
+      {
+        question: "Ce plantă ajută la purificarea aerului în casă?",
+        answers: [
+          { text: "Ficus", correct: true },
+          { text: "Cactus deșertic", correct: false },
+          { text: "Busuioc uscat", correct: false }
+        ]
+      },
+      {
+        question: "Ce înseamnă simbolul ♻️?",
+        answers: [
+          { text: "Reciclare", correct: true },
+          { text: "Pericol biologic", correct: false },
+          { text: "Gătit sănătos", correct: false }
+        ]
+      },
+      {
+        question: "Ce dispozitiv folosești pentru a măsura temperatura?",
+        answers: [
+          { text: "Termometru", correct: true },
+          { text: "Calculator", correct: false },
+          { text: "Lanternă", correct: false }
+        ]
+      },
+      {
+        question: "Ce energie este considerată verde?",
+        answers: [
+          { text: "Solară", correct: true },
+          { text: "Nucleară", correct: false },
+          { text: "Benzină", correct: false }
+        ]
+      }
+    ];
+
+    function shuffle(array) {
+      let currentIndex = array.length, randomIndex;
+      while (currentIndex != 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+      }
+      return array;
+    }
+
+    function loadQuiz() {
+      const quiz = quizData[Math.floor(Math.random() * quizData.length)];
+      document.getElementById('quiz-question').textContent = quiz.question;
+      const btnContainer = document.getElementById('quiz-buttons');
+      btnContainer.innerHTML = '';
+      shuffle(quiz.answers).forEach(ans => {
+        const btn = document.createElement('button');
+        btn.className = 'btn';
+        btn.textContent = ans.text;
+        btn.onclick = () => {
+          if (ans.correct) {
+            alert('Bravo! Ai ales corect! ✅');
+          } else {
+            alert('Ups! Încearcă din nou! ❌');
+          }
+          loadQuiz();
+        };
+        btnContainer.appendChild(btn);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', loadQuiz);
     function togglePopup(id) {
       document.getElementById(id).style.display = 'block';
       document.getElementById('overlay').style.display = 'block';
