@@ -302,7 +302,11 @@
   </button>
 </section>
 
-
+<section class="section">
+  <button class="btn" onclick="togglePopup('popupForm')">
+    <i class="fas fa-file-alt"></i> Înscriere Reală
+  </button>
+</section>
 
 <footer>
   <p>&copy; 2025 Asociația Grupul Verde - Toate drepturile rezervate.</p>
@@ -333,6 +337,14 @@
   <br>
   <button class="btn" onclick="window.open('https://wa.me/40772246337?text=Salut%20Marian!%20Aș%20vrea%20să%20vorbim%20despre%20formare%20digitală%20sau%20colaborare!')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
   <button class="btn" onclick="window.location.href='mailto:office@grupulverde.ro?subject=Colaborare%20educațională&body=Salut%20Marian,%20mi-ar%20plăcea%20să%20discutăm%20despre%20proiecte%20educaționale%20digitale.'"><i class="fas fa-envelope"></i> Colaborare</button>
+</div>
+
+<div id="popupForm" class="popup">
+  <h3>✍️ Înscriere la Exploratori Eco</h3>
+  <p>Completează formularul de mai jos pentru a primi detalii despre activitățile, diplomele și evenimentele educative oferite prin platforma noastră. Îți mulțumim pentru implicare! 🌱</p>
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfKikn6JlxvHgL9FSDBrxUGCA6aW5AAIE4QZp52VJcqQxE55g/viewform?embedded=true&hl=ro" width="100%" height="640" frameborder="0" marginheight="0" marginwidth="0">Se încarcă…</iframe>
+  <br><br>
+  <button class="btn" onclick="closePopups()">Închide</button>
 </div>
 
 <div class="overlay" id="overlay" onclick="closePopups()"></div>
