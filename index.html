@@ -465,6 +465,7 @@ function closePopups() {
       document.getElementById('numeAfisat').textContent = `Se acordă lui: ${nume}, ${varsta} ani`;
       document.getElementById('dataAfisata').textContent = `Data: ${data}`;
       document.getElementById('diploma').style.display = 'block';
+showToast();
     }
 
     function downloadDiploma() {
@@ -477,5 +478,19 @@ function closePopups() {
     }
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<div id="toast" style="position: fixed; bottom: 30px; right: 30px; background: #4caf50; color: white; padding: 1rem 2rem; border-radius: 30px; font-weight: bold; display: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 9999;">
+  🎉 Felicitări! Diploma ta a fost generată cu succes!
+</div>
+
+<script>
+function showToast(message = "🎉 Felicitări! Diploma ta a fost generată cu succes!") {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.style.display = "block";
+  setTimeout(() => {
+    toast.style.display = "none";
+  }, 4000);
+}
+</script>
 </body>
 </html>
