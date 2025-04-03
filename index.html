@@ -185,6 +185,21 @@
   </style>
 </head>
 <body>
+
+  <!-- Pop-up de întâmpinare -->
+  <div id="popupWelcome" class="popup" style="display:none;">
+    <h3>Bine ați venit la Exploratori Eco! 🌱</h3>
+    <p>Suntem bucuroși că ai ajuns aici! Această platformă este creată pentru a ajuta copiii și părinții să învețe prin joc despre natură, tehnologie și protejarea planetei. 🌍💡</p>
+    <ul>
+      <li>✅ Descoperă quiz-uri interactive</li>
+      <li>🎓 Obține o diplomă personalizată</li>
+      <li>📅 Urmează misiunile zilnice eco</li>
+      <li>🎧 Ascultă informațiile narate cu voce</li>
+    </ul>
+    <p>Fiecare click este o aventură verde! Ești gata? 😄</p>
+    <button class="btn" onclick="closePopupWelcome()">Hai să începem!</button>
+  </div>
+
   <header style="justify-content: center;">
   <img src="https://raw.githubusercontent.com/TheTechology/masurarea-calitate-aer-adjud/main/LGV.png" alt="Grupul Verde" style="height: 80px;">
 </header>
@@ -404,12 +419,25 @@
       });
     }
 
-    document.addEventListener('DOMContentLoaded', loadQuiz);
+    document.addEventListener('DOMContentLoaded', () => {
+  loadQuiz();
+  setTimeout(showPopupWelcome, 1000);
+});
     function togglePopup(id) {
       document.getElementById(id).style.display = 'block';
       document.getElementById('overlay').style.display = 'block';
     }
-    function closePopups() {
+    function showPopupWelcome() {
+  document.getElementById('popupWelcome').style.display = 'block';
+  document.getElementById('overlay').style.display = 'block';
+}
+
+function closePopupWelcome() {
+  document.getElementById('popupWelcome').style.display = 'none';
+  document.getElementById('overlay').style.display = 'none';
+}
+
+function closePopups() {
       document.querySelectorAll('.popup').forEach(p => p.style.display = 'none');
       document.getElementById('overlay').style.display = 'none';
     }
