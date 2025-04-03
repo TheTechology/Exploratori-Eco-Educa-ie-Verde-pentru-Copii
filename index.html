@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <!-- Meta taguri pentru SEO și accesibilitate -->
+  <meta name="description" content="Proiect educațional al Asociației Grupul Verde din Adjud pentru copii și părinți interesați de educația digitală, ecologie, activități interactive și dezvoltare durabilă.">
+  <meta name="keywords" content="Grupul Verde, educație ecologică copii, alfabetizare digitală, părinți implicați, activități în natură, senzori Arduino, tehnologie și mediu, diplome online, cluburi educaționale copii">
+  <meta name="author" content="Asociația Grupul Verde">
+  <meta property="og:title" content="Proiect educațional Grupul Verde – pentru copii și părinți implicați">
+  <meta property="og:description" content="Un spațiu interactiv și sigur unde copiii învață despre mediu, tehnologie și valori verzi. Creat pentru familii care investesc în educația viitorului.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/TheTechology/masurarea-calitate-aer-adjud/main/Captura%CC%86%20de%20ecran%20din%202025-04-03%20la%2012.50.48.png">
+  <meta property="og:url" content="https://grupulverde.ro">
+  <meta name="robots" content="index, follow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grupul Verde - Educație și Mediu</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: linear-gradient(to right, #F2FFF0, #E8FBEA);
+  color: #235347;
+}
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background-color: #d0e6f7;
+      border-bottom: 5px solid #a2d2ff;
+    }
+    header img {
+      height: 60px;
+    }
+    h1 {
+      font-size: 2rem;
+      color: #13547a;
+    }
+    .hero {
+      padding: 3rem;
+      text-align: center;
+    }
+    .hero h2 {
+      font-size: 2.5rem;
+      color: #20858f;
+    }
+    .hero p {
+      font-size: 1.2rem;
+    }
+    .section {
+      padding: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .card {
+      background: #ffffffdd;
+      border-radius: 15px;
+      margin: 1rem;
+      padding: 2rem;
+      width: 250px;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card i {
+  font-size: 3rem;
+  color: #00C2A8;
+  animation: bounce 2s infinite;
+}
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 2rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+      max-width: 400px;
+    }
+    .popup h3 {
+      margin-top: 0;
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 5;
+    }
+    .btn {
+  background: #7ED957;
+  border: none;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+    .btn:hover {
+  background: #00C2A8;
+}
+    .badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #F8E559;
+  border-radius: 20px;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: #444;
+}
+    .quiz, .calendar {
+      background: #f1faff;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 600px;
+      text-align: center;
+    }
+    .quiz button, .calendar button {
+      margin-top: 1rem;
+    }
+    .speaker-icon {
+      font-size: 1.5rem;
+      color: #00b4d8;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .calendar ul { list-style: none; padding: 0; }
+    .calendar li {
+      background: #e0f7fa;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #caf0f8;
+    }
+      @media (max-width: 600px) {
+      .section {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+      }
+      .card {
+        width: 90%;
+        padding: 1.5rem;
+      }
+      .quiz, .calendar {
+        padding: 1.5rem;
+        margin: 1rem;
+      }
+      header img {
+        height: 60px;
+      }
+      .btn {
+        width: 90%;
+        margin-top: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header style="justify-content: center;">
+  <img src="https://raw.githubusercontent.com/TheTechology/masurarea-calitate-aer-adjud/main/LGV.png" alt="Grupul Verde" style="height: 80px;">
+</header>
+
+  <section class="hero">
+    <h2>Educație pentru Mediu și Tehnologie</h2>
+    <p>Învățăm, Protejăm, Inovăm – împreună, prin tehnologie!</p>
+    <div class="badge">🌟 Explorator Eco</div>
+  </section>
+
+  <section class="section">
+    <div class="card">
+      <i class="fas fa-compass"></i>
+      <h3>Exploratori Eco</h3>
+      <button class="btn" onclick="togglePopup('popup4')">Intră în club</button>
+    </div>
+    <div class="card">
+      <i class="fas fa-book-reader"></i>
+      <h3>Alfabetizare digitală</h3>
+      <button class="btn" onclick="togglePopup('popup1')">Află mai mult</button>
+    </div>
+    <div class="card">
+      <i class="fas fa-leaf"></i>
+      <h3>Protejarea mediului</h3>
+      <button class="btn" onclick="togglePopup('popup2')">Detalii</button>
+    </div>
+    <div class="card">
+      <i class="fas fa-robot"></i>
+      <h3>Proiecte cu senzori</h3>
+      <button class="btn" onclick="togglePopup('popup3')">Vezi simulare</button>
+    </div>
+  </section>
+
+  <section class="quiz">
+    <h3>🎮 Joc rapid: Ce știi despre natură și tehnologie?</h3>
+    <p>Care dintre următoarele NU este reciclabil?</p>
+    <button class="btn" onclick="alert('Bravo! Ai ales corect! ❌ Hârtia igienică nu se reciclează.')">Hârtie igienică</button>
+    <button class="btn" onclick="alert('Hmm... Greșit. Ambalajele metalice se reciclează!')">Doze de aluminiu</button>
+    <button class="btn" onclick="alert('Oops! Sticla se reciclează perfect!')">Sticlă</button>
+  </section>
+
+  <section class="calendar">$1</section>
+
+<!-- 🏅 Secțiune generare diplomă -->
+  <section class="quiz">
+    <h3>🏅 Primește diploma ta digitală!</h3>
+    <p>Completează formularul și obține o diplomă personalizată 🧒🌿</p>
+    <form onsubmit="event.preventDefault(); generateDiploma();">
+      <input type="text" id="numeCopil" placeholder="Nume și Prenume" required style="padding:10px; border-radius:10px; border:1px solid #ccc; width:80%; margin-bottom:10px;"><br>
+      <input type="number" id="varstaCopil" placeholder="Vârsta" required style="padding:10px; border-radius:10px; border:1px solid #ccc; width:80%; margin-bottom:10px;"><br>
+      <button type="submit" class="btn">Generează Diploma</button>
+    </form>
+    <div id="diploma" style="margin-top:2rem; display:none; background:white; border-radius:20px; padding:2rem; box-shadow:0 0 10px rgba(0,0,0,0.2);">
+      <h2 style="color:#20858f;">🎓 DIPLOMĂ DE MERIT</h2>
+      <p id="numeAfisat"></p>
+      <p id="titluAfisat">Titlul: Explorator Eco al Tehnologiei</p>
+      <p id="dataAfisata"></p>
+      <p style="font-style:italic;">Felicitări pentru implicarea ta în educația pentru mediu prin tehnologie!</p>
+      <img src="https://raw.githubusercontent.com/TheTechology/masurarea-calitate-aer-adjud/main/LGV.png" style="width:80px; margin-top:1rem;">
+      <br><br>
+      <button class="btn" onclick="downloadDiploma()">📥 Descarcă Diploma</button>
+    </div>
+  </section>
+
+  
+
+  
+
+  <!-- Popups -->
+  <div id="popup1" class="popup">
+    <h3>Alfabetizare digitală <i class="fas fa-volume-up speaker-icon" onclick="speakText('popup1')"></i></h3>
+    <p id="popup1-text">✨ Îți place să folosești calculatorul? La Grupul Verde înveți să scrii cod, să creezi jocuri, site-uri colorate și chiar să controlezi roboței simpatici! Înveți cum să fii în siguranță pe internet și cum poți construi viitorul cu o tastă și o idee bună. 💡🌐</p>
+    <div class="badge">📘 Explorator Digital</div>
+  </div>
+  <div id="popup2" class="popup">
+    <h3>Protejarea mediului <i class="fas fa-volume-up speaker-icon" onclick="speakText('popup2')"></i></h3>
+    <p id="popup2-text">🌍 Știai că tehnologia ne poate ajuta să salvăm natura? La atelierele noastre, copiii devin eroi verzi care învață cum să curețe planeta, să măsoare calitatea aerului și a apei, și să folosească aplicații pentru a proteja tot ce este verde! 🍀📱</p>
+    <div class="badge">🌿 Erou Verde</div>
+  </div>
+  <div id="popup3" class="popup">
+    <h3>Proiecte cu senzori <i class="fas fa-volume-up speaker-icon" onclick="speakText('popup3')"></i></h3>
+    <p id="popup3-text">🔧 Vrei să afli cum funcționează un senzor? Hai în laboratorul nostru digital! Construim împreună stații meteo în miniatură, conectăm senzori și display-uri și descoperim cum putem măsura temperatura, calitatea aerului și alți indicatori de mediu cu ajutorul plăcilor Arduino și micro:bit! 🧪🌡️💻</p>
+    <div class="badge">🤖 Inventator Junior</div>
+  </div>
+
+  <div id="popup4" class="popup">
+    <h3>Exploratori Eco <i class="fas fa-volume-up speaker-icon" onclick="speakText('popup4')"></i></h3>
+    <p id="popup4-text">🌱 Bine ai venit în clubul celor curajoși și curioși! Exploratorii Eco sunt copiii care iubesc natura, învață despre plante, animale, energie verde și sunt mereu gata de acțiune pentru protejarea planetei! Fiecare misiune este o aventură! 🔍🌳</p>
+    <div class="badge">🧭 Aventurier Verde</div>
+  </div>
+
+  
+
+  <section class="section">
+  <button class="btn" onclick="window.open('https://wa.me/40772246337?text=Salut!%20Vreau%20mai%20multe%20informații%20despre%20activitățile%20Grupului%20Verde!')">
+    <i class="fab fa-whatsapp"></i> Contactează-ne
+  </button>
+  <button class="btn" onclick="window.location.href='mailto:office@grupulverde.ro?subject=Înscriere%20simulare%20educativă&body=Doresc%20să%20mă%20înscriu%20la%20simularea%20interactivă.%20Numele%20meu%20este...'">
+    <i class="fas fa-envelope"></i> Înscriere Simulare
+  </button>
+</section>
+
+<footer>
+  <p>&copy; 2025 Asociația Grupul Verde - Toate drepturile rezervate.</p>
+</footer>
+
+  <div class="overlay" id="overlay" onclick="closePopups()"></div>
+
+  
+
+  
+
+  
+
+  
+  <script>
+    function togglePopup(id) {
+      document.getElementById(id).style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+    }
+    function closePopups() {
+      document.querySelectorAll('.popup').forEach(p => p.style.display = 'none');
+      document.getElementById('overlay').style.display = 'none';
+    }
+    function speakText(popupId) {
+      const textElement = document.querySelector(`#${popupId}-text`);
+      const utterance = new SpeechSynthesisUtterance(textElement.textContent);
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utterance);
+    }
+    function generateDiploma() {
+      const nume = document.getElementById('numeCopil').value;
+      const varsta = document.getElementById('varstaCopil').value;
+      const data = new Date().toLocaleDateString('ro-RO');
+
+      document.getElementById('numeAfisat').textContent = `Se acordă lui: ${nume}, ${varsta} ani`;
+      document.getElementById('dataAfisata').textContent = `Data: ${data}`;
+      document.getElementById('diploma').style.display = 'block';
+    }
+
+    function downloadDiploma() {
+      html2canvas(document.querySelector("#diploma")).then(canvas => {
+        const link = document.createElement("a");
+        link.download = "diploma_grupul_verde.png";
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</body>
+</html>
